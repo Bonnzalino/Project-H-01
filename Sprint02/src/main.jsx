@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { children } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     element:  <App />,
     errorElement: <Error />,
   },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

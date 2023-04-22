@@ -2,10 +2,12 @@ import React from 'react'
 import Layout from './Navbar/Layout';
 
 
-function Error() {
+function DashBoard() {
   return (
-    <div>Error</div>
+    <Layout>
+
+    </Layout>
   )
 }
 
-export default Error
+export default DashBoard

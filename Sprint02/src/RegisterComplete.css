@@ -1,1 +1,16 @@
 @import "./style/global.css";
+.container{
+    background-color: #F3BD18;
+    border-radius: 20px;
+    margin: 60px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+.container img{
+    margin-bottom: 27px;
+    width: 170px;
+    height: 150px;
+  }

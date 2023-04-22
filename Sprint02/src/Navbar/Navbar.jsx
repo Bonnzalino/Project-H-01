@@ -15,7 +15,6 @@ function Navbar() {
     }
     
   }
-  console.log(modalState)
 
   return (
     <div>
@@ -26,8 +25,9 @@ function Navbar() {
         <span className='Appname'>Everlasting</span>
         <ul>
             <li><a href='/'>Home</a></li>
-            <li><a href='/Login'>Log in</a></li>
-            <li><a href='#'>Log out</a></li>
+            <li><a href='/RegisterComplete'>Log in</a></li>
+            <li><a href='/AddActivity'>Log out</a></li>
+
         </ul>
     </div>
     {modalState && createPortal(<Modal modalState={modalState} handleModalState={handleModalState} />, document.getElementById('root'))}

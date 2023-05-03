@@ -5,7 +5,7 @@ import Layout from './Navbar/Layout';
 function DashBoard() {
   return (
     <Layout>
-
+    
     </Layout>
   )
 }

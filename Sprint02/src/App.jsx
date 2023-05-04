@@ -8,7 +8,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Button from 'react-bootstrap/Button';
-import SignInSide from './MuiSigninSide'
+import SignInSide from './Login'
 import SignIn from './MUISignin';
 import BootstrapDashboard from './BootstrapDashboard';
 function App() {

@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import { useState } from 'react'
+import Layout from './Navbar/Layout';
 import './App.css'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,17 +12,10 @@ import SignInSide from './MuiSigninSide'
 import SignIn from './MUISignin';
 import BootstrapDashboard from './BootstrapDashboard';
 function App() {
-  
   return (
-    <div className="App">
-      <div>
-        
-        {/* <SignIn /> */}
-        {/* <SignInSide /> */}
-        <BootstrapDashboard />
-
-      </div>
-    </div>
+    <Layout>
+      
+    </Layout>
   )
 }
 

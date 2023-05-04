@@ -6,6 +6,7 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+
 function Activitycard() {
   return (
     <div>
@@ -44,9 +45,7 @@ function Activitycard() {
                 <br />
                 <br />
               </Card.Text>
-              <Button variant="outline-primary" className="addactivitybtn">
-              <i class="fa-solid fa-plus fa-2xl"></i>
-              </Button>
+              
               <Button variant="outline-success" className="editactivitybtn">
                 <i className="fa-solid fa-pen-to-square fa-2xl"></i>
               </Button>

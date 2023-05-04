@@ -92,6 +92,7 @@ function EditActivity() {
     }else{
       setDb([...db, editData])
       setEditData({})
+      setIsSelect("")
       alert("update success")
     }
   }
@@ -126,15 +127,15 @@ function EditActivity() {
           </Swiper>
           <span><p>selected activity : {isSelect}</p></span>
           <p>{activityError}</p>
-          <input type='text' placeholder='Activity Name' name='activityName' value={editData.activityName||""} onChange={handlerChange}/>
+          <input type='text' placeholder='Activity Name' name='activityName' value={editData.activityName||""} onChange={handlerChange} style={{backgroundColor:activityNameError&&editData.activityName?"salmon":null}}/>
           <p>{activityNameError&&editData.activityName?activityNameError:""}</p>
-          <input type='text' placeholder='Activity Detail' name='activityDetail' value={editData.activityDetail||""} onChange={handlerChange}/>
+          <input type='text' placeholder='Activity Detail' name='activityDetail' value={editData.activityDetail||""} onChange={handlerChange} style={{backgroundColor:activityDetailError&&editData.activityDetail?"salmon":null}}/>
           <p>{activityDetailError&&editData.activityDetail?activityDetailError:""}</p>
-          <input type='date' placeholder='Time' name='timeStart' value={editData.timeStart||""} onChange={handlerChange}/>
+          <input type='date' placeholder='Time' name='timeStart' value={editData.timeStart||""} onChange={handlerChange} style={{backgroundColor:timeStartError&&editData.timeStart?"salmon":null}}/>
           <p>{timeStartError&&editData.timeStart?timeStartError:""}</p>
-          <input type='date' placeholder='Time' name='timeEnd' value={editData.timeEnd||""} onChange={handlerChange}/>
+          <input type='date' placeholder='Time' name='timeEnd' value={editData.timeEnd||""} onChange={handlerChange} style={{backgroundColor:timeEndError&&editData.timeEnd?"salmon":null}}/>
           <p>{timeEndError&&editData.timeEnd?timeEndError:""}</p>
-          <input type='number' placeholder='Distance' name='distance' value={editData.distance||""} onChange={handlerChange}/>
+          <input type='number' placeholder='Distance' name='distance' value={editData.distance||""} onChange={handlerChange} style={{backgroundColor:distanceError&&editData.distance?"salmon":null}}/>
           <p>{distanceError&&editData.distance?distanceError:""}</p>
           <input type='file' />
           {/* <p></p> */}

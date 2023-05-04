@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Activitycard from "./Activitycard";
 import Profile from "./Profile";
 
+
 function BootstrapDashboard() {
   return (
     <Container fluid className="bigcontainer">
@@ -17,7 +18,7 @@ function BootstrapDashboard() {
             <Profile />
         </Col>
         <Col className="dashboard card-group" sm={12} md={9} xl={10}>
-        
+           <h2 className="dashboardTitle d-sm-block d-md-none">Dashboard</h2>
           <Activitycard />
           <Activitycard />
           <Activitycard />

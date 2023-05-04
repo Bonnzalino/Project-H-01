@@ -18,9 +18,9 @@ function App() {
     <div className="App">
       <div>
         
-        <SignIn />
+        {/* <SignIn /> */}
         {/* <SignInSide /> */}
-        {/* <BootstrapDashboard /> */}
+        <BootstrapDashboard />
 
       </div>
     </div>

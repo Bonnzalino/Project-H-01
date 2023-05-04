@@ -16,22 +16,30 @@ function Activitycard() {
               src="src/images/elder-bicycling.jpeg"
             />
             <Card.Body>
-              <Card.Title>Activity Name</Card.Title>
+              <Card.Title>Activity Name</Card.Title>  
               <Card.Text>
                 Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                the bulk of the card's content.  {/* <<<<<<<<<<<<<<<Add description here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
                 <i className="fa-solid fa-calendar-days fa-2xl acdetail"></i>
+                &nbsp; &nbsp;
+                19/09/23 {/* <<<<<<<<<<<<<<<Add date here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
                 <i className="fa-solid fa-stopwatch fa-2xl acdetail"></i>
+                &nbsp; &nbsp;
+                12:02:02 {/* <<<<<<<<<<<<<<<Add duration here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
                 <i className="fa-solid fa-route fa-2xl acdetail"></i>
+                &nbsp; &nbsp;
+                12.02km {/* <<<<<<<<<<<<<<<Add distance here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
                 <i className="fa-solid fa-gauge-high fa-2xl acdetail"></i>
+                &nbsp; &nbsp;
+                1 km/hr {/* <<<<<<<<<<<<<<<Add avg.spd here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
                 <br />

@@ -1,9 +1,15 @@
 @import "./style/global.css";
+
+/* .body{
+    background: url(./images/background.PNG);
+    background-attachment: fixed;
+} */
 .container{
     background-color: #F3BD18;
     border-radius: 20px;
-    margin: 60px;
-    height: 85vh;
+    /* margin: 60px;*/
+    margin-top: 40px;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,3 +20,21 @@
     width: 170px;
     height: 150px;
   }
+
+@media (max-width: 768px) {
+  .container{
+    margin-top: 60px;
+    height: 80vh;
+    border-radius: 20px;
+  }
+  .container img{
+    width: 120px;
+    height: 110px;
+  }
+  .container h1{
+    font-size: 24px;
+  }
+  .container h4,span{
+    font-size: 18px;
+  }
+}

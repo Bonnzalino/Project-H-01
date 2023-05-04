@@ -2,12 +2,17 @@ import React, {useState, useEffect} from "react";
 
 import "./AddActivity.css";
 import Navbar from "./Navbar/Navbar";
-
 const Form = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [data, setData] = useState({activityName:"",distance:"",activityDetail:"",startTime:"", finishTime:"",file:""})
   const [formErrors, setFormErrors] = useState({})
   const [isSubmit, setIsSubmit] = useState(false)
+
+  const handleClick = (theActivity) =>{
+    setSelectedActivity(theActivity)
+  }
+
+  useEffect(()=> setData({...data,"activityName":selectedActivity}),[selectedActivity])
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -16,7 +21,6 @@ const Form = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    
     setFormErrors(validate(data))
     setIsSubmit(true)
   }
@@ -31,7 +35,7 @@ const Form = () => {
     const errors ={}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!data.activityName){
-      errors.activityName = "Activity name is required!";
+      errors.activityName = "Please select an activity.";
     }
     if (!data.activityDetail){
       errors.activityDetail = "Activity detail is required!";
@@ -55,29 +59,29 @@ const Form = () => {
         <h4>Select an activity</h4>
 
       <div className="activity-imgs">
-        <button onClick={() => setSelectedActivity("Biking")}><img
+        <button onClick={() => handleClick("Biking")} style={{backgroundColor:selectedActivity==="Biking"? "white": null}}><img 
           src="./icons/bicycle.png"
           alt="biking"
         />
         </button>
-        <button onClick={() => setSelectedActivity("Hiking")}>
+        <button onClick={() => handleClick("Hiking")} style={{backgroundColor:selectedActivity==="Hiking"? "white": null}}>
         <img
           src="./icons/hiking.png"
           alt="hiking"
         />
         </button>
-        <button onClick={() => setSelectedActivity("Running")}>
+        <button onClick={() => handleClick("Running")} style={{backgroundColor:selectedActivity==="Running"? "white": null}}>
         <img
           src="./icons/running.png"
           alt="running"
         /></button>
-        <button onClick={() => setSelectedActivity("Walking")}>
+        <button onClick={() => handleClick("Walking")} style={{backgroundColor:selectedActivity==="Walking"? "white": null}}>
         <img
           src="./icons/walk.png"
           alt="walking"
         />
         </button>
-        <button onClick={() => setSelectedActivity("Swimming")}>
+        <button onClick={() => handleClick("Swimming")} style={{backgroundColor:selectedActivity==="Swimming"? "white": null}}>
         <img
           src="./icons/swimming.png"
           alt="swimming"
@@ -85,35 +89,36 @@ const Form = () => {
         </button>
       </div>
       <div id="error">
-      <form action="/">
+      <form onSubmit={handleSubmit} action="/">
         <div>
-          <label>{selectedActivity}</label><br/>
+          <label id="activityName">Activity: {selectedActivity}</label><br/>
+          <p className="error-message">{formErrors.activityName}</p>
         </div>
-        <p>{formErrors.activityDetail}</p>
         <div>
           <label>Activity detail</label><br/>
           <input type="text" name="activityDetail" value={data.activityDetail} onChange={handleChange}/>
+          <p className="error-message">{formErrors.activityDetail}</p>
         </div>
-        <p>{formErrors.distance}</p>
         <div>
           <label>Distance (km)</label><br/>
           <input type="number" name="distance" value={data.distance} onChange={handleChange}/>
+          <p className="error-message">{formErrors.distance}</p>
         </div>
-        <p>{formErrors.startTime}</p>
         <div>
           <label>Start time</label><br/>
           <input type="datetime-local" name="startTime" value={data.startTime} onChange={handleChange}/>
+          <p className="error-message">{formErrors.startTime}</p>
         </div>
-        <p>{formErrors.finishTime}</p>
         <div>
           <label>Finish time</label><br/>
           <input type="datetime-local" name="finishTime" value={data.finishTime} onChange={handleChange}/>
+          <p className="error-message">{formErrors.finishTime}</p>
         </div>
-        <div id="add-file">
+        <div>
           <label >Attach an image</label><br/>
           <input type="file" name="file" value={data.file} onChange={handleChange}/>
         </div>
-        <button className="addNewActivity-btn" type="submit" onSubmit={handleSubmit}> Add New Activity </button>
+        <button className="addNewActivity-btn" type="submit"> Add New Activity </button>
       </form>
       </div>
       </div>

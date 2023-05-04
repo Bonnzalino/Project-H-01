@@ -16,6 +16,8 @@ import AddActivity from './AddActivity';
 import RegisterComplete from './RegisterComplete';
 import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
+import EditProfile from './EditProfile';
+import EditActivity from './EditActivity';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,16 @@ const router = createBrowserRouter([
   {
     path: "/RegisterForm",
     element:  <RegisterForm />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/EditProfile",
+    element:  <EditProfile />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/EditActivity",
+    element:  <EditActivity />,
     errorElement: <Error />,
   },
 ]);

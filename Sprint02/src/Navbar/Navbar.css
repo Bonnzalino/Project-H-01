@@ -2,12 +2,13 @@
 
 /* navbar style */
 .Nav {
+    min-width: 300px;
     background-color: var(--primary-orange);
     display: flex;
     color: black;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 8%;
     width: 100%;
     position: absolute;
     z-index: 0;
@@ -73,6 +74,7 @@ li>a {
 
     .modal-box[state='true'] {
         position: fixed;
+        top: 0;
         left: -40%;
         background-color: white;
         box-shadow: 5px 0 10px gray;
@@ -82,7 +84,7 @@ li>a {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        animation: showmodal 0.4s linear;
+        animation: showmodal 0.3s linear;
         animation-fill-mode: forwards;
     }
 
@@ -97,6 +99,7 @@ li>a {
 
     .modal-box[state='wait'] {
         position: fixed;
+        top: 0;
         left: 0%;
         background-color: white;
         box-shadow: 5px 0 10px gray;
@@ -106,7 +109,7 @@ li>a {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        animation: closemodal 0.4s linear;
+        animation: closemodal 0.3s linear;
         animation-fill-mode: forwards;
     }
 

@@ -24,9 +24,7 @@ function Profile() {
             <i className="fa-solid fa-pen-to-square"></i> Edit Profile
             </Button>
             <Button variant="secondary" className="addbtn">
-            <i className="fa-regular fa-square-plus">
-
-            </i>  Add Activity
+            <i className="fa-regular fa-square-plus" />  Add Activity
           </Button>{" "}
             </Card.Body>
         </Card>

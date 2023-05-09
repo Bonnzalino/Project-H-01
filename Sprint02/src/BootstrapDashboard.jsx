@@ -9,9 +9,11 @@ import Card from "react-bootstrap/Card";
 import Activitycard from "./Activitycard";
 import Profile from "./Profile";
 import AddBtn from './AddBtn';
+import Layout from "./Navbar/Layout";
 
 function BootstrapDashboard() {
   return (
+    <Layout>
     <Container fluid className="bigcontainer">
       
       <Row>
@@ -26,10 +28,15 @@ function BootstrapDashboard() {
           <Activitycard />
           <Activitycard />
           <Activitycard />
+          <Activitycard />
+          <Activitycard />
+          <Activitycard />
+          <Activitycard />
           
         </Col>
       </Row>
     </Container>
+    </Layout>
   );
 }
 

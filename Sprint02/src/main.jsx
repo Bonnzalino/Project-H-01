@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { children } from 'react'
 import ReactDOM from 'react-dom/client'
 import './main.css'
 import {
@@ -16,6 +16,8 @@ import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
 import Dashboard from './DashBoard';
 import Login from './Login';
+import EditProfile from './EditProfile';
+import EditActivity from './EditActivity';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,8 @@ const router = createBrowserRouter([
     element:  <EditProfile />,
     errorElement: <Error />,
   },
+
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

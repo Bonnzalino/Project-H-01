@@ -18,11 +18,11 @@ import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
 import EditProfile from './EditProfile';
 import EditActivity from './EditActivity';
-
+import BootstrapDashboard from './BootstrapDashboard';
 const router = createBrowserRouter([
   {
     path: "/",
-    element:  <DashBoard />,
+    element:  <BootstrapDashboard />,
     errorElement: <Error />,
   },
   {

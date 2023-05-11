@@ -11,6 +11,7 @@
   background-color: rgba(6, 108, 107, 0.3);
   backdrop-filter: blur(5px);
   justify-content: space-evenly;
+  border-radius: 2rem;
 }
 
 .profileH,
@@ -65,7 +66,6 @@
 }
 
 .activitycard {
-  border-radius: 20px;
   width: 350px;
   background-color: rgba(243, 189, 24, 0.6);
   backdrop-filter: blur(5px);
@@ -189,4 +189,12 @@
 
 .addbtnleft:hover >.plussymbol {
   display: none;
+}
+
+.cardtitle {
+  font-weight: 900;
+}
+
+.card-group {
+  gap: 50px;
 }

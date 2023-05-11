@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Hidden } from "@mui/material";
+import Layout from './Navbar/Layout'
 
 function Copyright(props) {
   return (
@@ -67,8 +68,9 @@ export default function SignInSide() {
   });
 
   return (
+    <Layout>
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid className="page-box" container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -228,5 +230,6 @@ export default function SignInSide() {
         </Grid>
       </Grid>
     </ThemeProvider>
+    </Layout>
   );
 }

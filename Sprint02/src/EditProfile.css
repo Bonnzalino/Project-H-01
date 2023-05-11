@@ -20,6 +20,7 @@
     background-color: var(--primary-yellow);
     border-radius: 30px;
     border: none;
+    width: 70%;
 }
 
 .form-box>input[type="file"]{

@@ -6,21 +6,21 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import App from './App'
+
 import Error from './Error'
-import Login from './Login';
-import DashBoard from './DashBoard';
 import AddActivity from './AddActivity';
-// import EditActivity from './EditActivity';
-// import EditProfile from './EditProfile';
+import EditActivity from './EditActivity';
+import EditProfile from './EditProfile';
 import RegisterComplete from './RegisterComplete';
 import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
+import Dashboard from './DashBoard';
+import Login from './Login';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:  <DashBoard />,
+    element:  <Dashboard />,  //Should be landing page
     errorElement: <Error />,
   },
   {
@@ -41,6 +41,16 @@ const router = createBrowserRouter([
   {
     path: "/RegisterForm",
     element:  <RegisterForm />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/EditActivity",
+    element:  <EditActivity />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/EditProfile",
+    element:  <EditProfile />,
     errorElement: <Error />,
   },
 ]);

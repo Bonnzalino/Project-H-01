@@ -25,7 +25,12 @@ function Activitycard() {
                 <br />
                 <i className="fa-solid fa-calendar-days fa-2xl acdetail"></i>
                 &nbsp; &nbsp;
-                19/09/23 {/* <<<<<<<<<<<<<<<Add date here<<<<<<<<<<<<<<< */}
+                Start 19/09/23 {/* <<<<<<<<<<<<<<<Add date here<<<<<<<<<<<<<<< */}
+                <br />
+                <br />
+                <i className="fa-solid fa-flag-checkered fa-2xl acdetail"></i>
+                &nbsp; &nbsp;
+                End 19/09/23 {/* <<<<<<<<<<<<<<<Add date here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
                 <i className="fa-solid fa-stopwatch fa-2xl acdetail"></i>
@@ -38,17 +43,14 @@ function Activitycard() {
                 12.02km {/* <<<<<<<<<<<<<<<Add distance here<<<<<<<<<<<<<<< */}
                 <br />
                 <br />
-                <i className="fa-solid fa-gauge-high fa-2xl acdetail"></i>
-                &nbsp; &nbsp;
-                1 km/hr {/* <<<<<<<<<<<<<<<Add avg.spd here<<<<<<<<<<<<<<< */}
-                <br />
-                <br />
+          
                 <br />
               </Card.Text>
-              
-              <Button variant="outline-success" className="editactivitybtn">
-                <i className="fa-solid fa-pen-to-square fa-2xl"></i>
-              </Button>
+              <a href='/EditActivity'>
+                <Button variant="outline-success" className="editactivitybtn">
+                  <i className="fa-solid fa-pen-to-square fa-2xl" />
+                </Button>
+              </a>
               <Button variant="outline-danger" className="deleteactivitybtn">
                 <i className="fa-solid fa-trash fa-2xl"></i>
               </Button>

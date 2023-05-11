@@ -20,14 +20,12 @@ function Profile() {
             Weight: kg <br />
             Age:
             </Card.Text>
-            <Button variant="secondary" className="editbtn">{" "}
-            <i className="fa-solid fa-pen-to-square"></i> Edit Profile
-            </Button>
-            <Button variant="secondary" className="addbtn">
-            <i className="fa-regular fa-square-plus">
-
-            </i>  Add Activity
-          </Button>{" "}
+            <a href='/EditProfile'><Button variant="secondary" className="editbtn">{" "}
+            <i className="fa-solid fa-pen-to-square" /> Edit Profile
+            </Button></a>
+            <a href='/AddActivity'><Button variant="secondary" className="addbtn">{" "}
+            <i className="fa-regular fa-square-plus" />  Add Activity
+            </Button></a>
             </Card.Body>
         </Card>
     </div>

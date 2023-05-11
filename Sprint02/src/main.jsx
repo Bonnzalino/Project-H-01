@@ -6,7 +6,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-
 import Error from './Error'
 import AddActivity from './AddActivity';
 import EditActivity from './EditActivity';
@@ -16,8 +15,6 @@ import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
 import Dashboard from './DashBoard';
 import Login from './Login';
-
-
 
 const router = createBrowserRouter([
   {

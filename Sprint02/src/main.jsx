@@ -16,8 +16,8 @@ import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
 import Dashboard from './DashBoard';
 import Login from './Login';
-import EditProfile from './EditProfile';
-import EditActivity from './EditActivity';
+
+
 
 const router = createBrowserRouter([
   {

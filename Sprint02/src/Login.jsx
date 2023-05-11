@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Hidden } from "@mui/material";
+import Layout from "./Navbar/Layout";
 
 function Copyright(props) {
   return (
@@ -43,7 +44,7 @@ const btnstyles = {
   fontSize: "24px",
 };
 
-export default function SignInSide() {
+export default function Login() {
   
   const initialValues = {
     email: "",
@@ -67,8 +68,9 @@ export default function SignInSide() {
   });
 
   return (
+    <Layout>
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ height: "100vh"}}>
         <CssBaseline />
         <Grid
           item
@@ -90,7 +92,7 @@ export default function SignInSide() {
         <Grid item xs={12} sm={6} md={4} component={Paper} elevation={6} square>
           <Box
             sx={{
-              my: 8,
+              my: 16,
               mx: 4,
               display: "flex",
               flexDirection: "column",
@@ -228,5 +230,6 @@ export default function SignInSide() {
         </Grid>
       </Grid>
     </ThemeProvider>
+    </Layout>
   );
 }

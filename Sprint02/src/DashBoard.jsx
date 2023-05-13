@@ -23,9 +23,10 @@ function Dashboard() {
         <Col className="d-none d-md-block profile" md={3} xl={2}>
             <Profile />
         </Col>
-        <Col className="dashboard card-group"  sm={12} md={9} xl={10}>
+        <Col className="dashboard"  sm={12} md={9} xl={10}>
           <DashboardLabel />
-          <Activitycard />
+          
+            <Activitycard />
           
         </Col>
       </Row>

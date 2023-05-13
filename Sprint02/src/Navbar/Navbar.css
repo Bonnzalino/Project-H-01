@@ -25,6 +25,7 @@
     margin: 0 20px;
     font-size: 30px;
     font-weight: 800;
+    
 }
 
 .Nav>ul {
@@ -161,4 +162,13 @@ li>a {
         background-color: rgba(216, 213, 213, 0.7);
         z-index: 1;
     }
+}
+
+.Appname > a {
+    text-decoration: none;
+    color: black;
+}
+
+.Appname > a:hover {
+    color: white;
 }

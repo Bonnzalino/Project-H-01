@@ -22,7 +22,7 @@ function Navbar() {
         <button className='hambergur-button' onClick={handleModalState}>
           <i className="fa-solid fa-bars fa-3x" style={{color: '#ffffff'}}></i>
         </button>
-        <span className='Appname'>Everlasting</span>
+        <span className='Appname'><a href='/'>Everlasting</a></span>
         <ul>
             <li><a href='/Login'>Log in</a></li>
             <li><a href='#'>Log out</a></li>

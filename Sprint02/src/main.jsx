@@ -15,11 +15,13 @@ import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
 import Dashboard from './DashBoard';
 import Login from './Login';
+import LandingPage from './LandingPage';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:  <Dashboard />,  //Should be landing page
+    element:  <LandingPage />,  //Should be landing page
     errorElement: <Error />,
   },
   {
@@ -50,6 +52,11 @@ const router = createBrowserRouter([
   {
     path: "/EditProfile",
     element:  <EditProfile />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/Dashboard",
+    element:  <Dashboard />,
     errorElement: <Error />,
   },
 

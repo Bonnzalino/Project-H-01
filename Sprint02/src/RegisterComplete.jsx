@@ -5,8 +5,9 @@ import "./RegisterComplete.css";
 const logo = "/images/logotrans.png";
 const RegisterComplete = () => {
   return (
-    <div className="body">
+    <>
     <Navbar/>
+    <div className="body">
       <div className="container">
         <img src={logo} alt="logo" />
         <h1>Registration Completed</h1>
@@ -16,6 +17,7 @@ const RegisterComplete = () => {
         </a>
       </div>
     </div>
+    </>
   );
 };
 export default RegisterComplete;

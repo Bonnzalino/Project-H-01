@@ -6,7 +6,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-
 import Error from './Error'
 import AddActivity from './AddActivity';
 import EditActivity from './EditActivity';

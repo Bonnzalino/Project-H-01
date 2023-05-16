@@ -185,7 +185,7 @@ function Activitycard() {
               <br />
               <br />
             </Card.Text>
-            <a href="/EditActivity">
+            <a href="/EditActivity/${cardd.id}">
               <Button variant="outline-success" className="editactivitybtn">
                 <i className="fa-solid fa-pen-to-square fa-2xl" />
               </Button>

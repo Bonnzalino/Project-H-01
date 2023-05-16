@@ -163,12 +163,12 @@ export default function Login() {
                         },
                       }}
                     />
-                    <Field
+                    {/* <Field
                       as={FormControlLabel}
                       name="remember"
                       control={<Checkbox value="remember" color="primary" />}
                       label="Remember me"
-                    />
+                    /> */}
                     <Button
                       type="submit"
                       fullWidth
@@ -184,9 +184,7 @@ export default function Login() {
               </Formik>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
+                  
                 </Grid>
                 <Grid item>
                   <Link href="/RegisterForm" variant="body2">

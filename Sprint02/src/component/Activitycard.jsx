@@ -108,12 +108,22 @@ const mockCard = [
     duration: 6000,
     distance: 2000,
   },
+  {
+    id: 11,
+    type: "Hiking",
+    name: "Hiking with her",
+    description: "Hiking in the morning",
+    start: "19-04-23:19.01",
+    end: "19-04-23:19.11",
+    duration: 6000,
+    distance: 2000,
+  },
 ];
 
 const typeIconMap = {
   Running:  "fa-person-running" ,
   Walking:  "fa-person-walking" ,
-  Swimming:  "fa-person-swimming" ,
+  Swimming:  "fa-person-swimming fa-flip-horizontal" ,
   Biking:  "fa-person-biking" ,
   Hiking:  "fa-person-hiking",
 };
@@ -144,7 +154,7 @@ function Activitycard() {
           />
           <Card.Body>
             <Card.Title className="cardtitle">{cardd.name} &nbsp; 
-            <i className={`fa-solid ${typeIconMap[cardd.type]} fa-xl`} title={cardd.type}/>
+            <span className="typetext">{cardd.type}&nbsp;</span><i className={`fa-solid ${typeIconMap[cardd.type]} fa-2xl actype`} title={cardd.type}/>
             </Card.Title>
             <Card.Text>
               {cardd.description}{" "}

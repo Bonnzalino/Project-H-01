@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-import HttpError from "../models/http-error";
+import HttpError from "../models/http-error.js";
 
 //schema
-import User from "../models/user-model";
-import Activity from "../models/activity-model";
+import User from "../models/user-model.js";
+import Activity from "../models/activity-model.js";
 
 const getActivityByUserId = async (req, res, next) => {
   const userId = req.params.uid;

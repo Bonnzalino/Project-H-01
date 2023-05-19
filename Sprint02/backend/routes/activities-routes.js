@@ -3,11 +3,11 @@ import express from "express";
 //controllers
 import getActivityByUserId, {
   createActivity,
-} from "../controllers/activities-controller";
+} from "../controllers/activities-controller.js";
 
-const router = express.Router();
+const ActivityRoutes = express.Router();
 
-router.get("/:uid", getActivityByUserId);
-router.post("/add-activity", createActivity);
+ActivityRoutes.get("/:uid", getActivityByUserId);
+ActivityRoutes.post("/add-activity", createActivity);
 
-export default router;
+export default ActivityRoutes;

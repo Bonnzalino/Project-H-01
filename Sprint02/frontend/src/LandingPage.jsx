@@ -23,7 +23,7 @@ function LandingPage() {
             />{" "}
             <span className="logintext">Everlasting</span>
           </Navbar.Brand>
-          <a href="/Login">
+          <a href={localStorage.token?"/Dashboard":"/Login"}>
             <span className="logintext">Log in</span>
           </a>
         </Container>

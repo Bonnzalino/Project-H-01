@@ -16,6 +16,10 @@ function Navbar() {
     
   }
 
+  function handleLogout () {
+    localStorage.removeItem('token')
+  }
+
   return (
     <div>
       <div className='Nav'>
@@ -25,7 +29,7 @@ function Navbar() {
         <span className='Appname'><a href='/'>Everlasting</a></span>
         <ul>
             <li><a href='/Login'>Log in</a></li>
-            <li><a href='#'>Log out</a></li>
+            <li><a href='/Login' onClick={handleLogout}>Log out</a></li>
             {/* <li><a href='/EditProfile'>Edit Pro</a></li>
             <li><a href='/EditActivity'>Edit Act</a></li>
             <li><a href='/RegisterForm'>Re from</a></li> */}

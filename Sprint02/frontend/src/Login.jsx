@@ -17,6 +17,9 @@ import * as Yup from "yup";
 import { Hidden } from "@mui/material";
 import Layout from "./Navbar/Layout";
 import "./Login.css";
+import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
+import axios from "axios";
 
 
 function Copyright(props) {
@@ -47,18 +50,33 @@ const btnstyles = {
 };
 
 export default function Login() {
+  const navigation = useNavigate();
+
   const initialValues = {
     email: "",
     password: "",
     remember: false,
   };
 
-  const handleSubmit = (values, props) => {
-    console.log(values);
+  const handleSubmit =(values, props) => {
     setTimeout(() => {
       props.resetForm();
       props.setSubmitting(false);
     }, 2000);
+    const login = async () => {
+        const resData = await axios.post('http://localhost:8080/user/login', {
+        email: values.email,
+        password: values.password
+      })
+      console.log(resData.data.status)
+      if(resData.data.status === 400){
+        alert(resData.data.message)
+      }else{
+        localStorage.setItem('token', resData.data.message)
+        navigation('/Dashboard')
+      }
+    }
+    login()
   };
 
   const validationSchema = Yup.object().shape({
@@ -121,7 +139,7 @@ export default function Login() {
               >
                 {(props) => (
                   <Form style={{ width: "90%" }}>
-                    {console.log(props)}
+                    {/* {console.log(props)} */}
                     <Field
                       as={TextField}
                       margin="normal"

@@ -1,15 +1,15 @@
 import express from "express";
 
 //schema
-import User from "../models/user-model.js";
+// import User from "../models/user-model.js";
 
 //controller
-import getAllUsers from "../controllers/users-controller.js";
+// import getAllUsers from "../controllers/users-controller.js";
 
-const router = express.Router();
+const UserRoutes = express.Router();
 
-router.get("/", () => getAllUsers);
+// UserRoutes.get("/", () => getAllUsers);
 
-router.post("/", async (req, res, next) => {});
+UserRoutes.post("/", async (req, res, next) => {});
 
-export default router;
+export default UserRoutes;

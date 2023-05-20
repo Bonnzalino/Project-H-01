@@ -3,13 +3,38 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const ActivitySchema = new Schema({
-  activityTitle: { type: String, required: true },
-  activityType: { type: String, required: true },
-  startTime: { type: Date, required: true },
-  finishTime: { type: Date, required: true },
-  activityDetail: { type: String },
-  activityStatus: { type: String, required: true },
-  creator: [{ type: mongoose.Types.ObjectId, required: true, ref: "User" }],
+  activityName: { 
+    type: String, 
+    required: [true, 'activity name is required'] 
+  },
+  activityType: { 
+    type: String, 
+    required: [true, 'activity type is required']  
+  },
+  startTime: { 
+    type: String, 
+    required: [true, 'start time is required']  
+  },
+  finishTime: { 
+    type: String, 
+    required: [true, 'finish time is required']  
+  },
+  activityDetail: { 
+    type: String,
+    required: [true, 'activity detail is required']
+   },
+  activityImage: { 
+    type: String,
+    // optional 
+  },
+  distance: {
+    type : String,
+    // optional
+  },
+  user: {
+    type: String, 
+    required: [true, 'user is required'], 
+  },
 });
 
 const Activity = mongoose.model("Activity", ActivitySchema, "activities");

@@ -5,7 +5,8 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const mockCard = [
   {
@@ -137,43 +138,77 @@ const typeImgMap = {
 };
 
 
+
+
 function Activitycard() {
-  const [card, setCard] = useState(mockCard);
+  const [card, setCard] = useState([]);
+
+  useEffect(() => {
+      async function fetchdata() {
+        const responseData = await axios.get('http://localhost:8080/activity/alldata')
+      setCard([...responseData.data]);
+      console.log(responseData.data);
+      }
+     fetchdata();
+  },[])
+
+  const deletePost = (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete?');
+      if (confirmDelete) {
+    console.log(id);
+    axios
+      .delete(`http://localhost:8080/activity/delete/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+      window.location.reload();
+  }};
+
+
+  // const deletePost = (id) => {
+  //   console.log(id);
+  //   axios
+  //     .delete(`http://localhost:8080/activity/delete/${id}`)
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+
+  //     window.location.reload();
+  // };
 
   return (
     <Row className="cardrow">
       {card.map((cardd) => (
         <Card
           className="activitycard"
-          key={cardd.id}
+          key={cardd._id}
         >
-          <Card.Img
+          {/* <Card.Img
             variant="top"
             className="activitypic"
-            src={`${typeImgMap[cardd.type]}`}
-          />
+            src={`${typeImgMap[cardd.activityType]}`}
+          /> */}
           <Card.Body>
-            <Card.Title className="cardtitle">{cardd.name} &nbsp; 
-            <span className="typetext">{cardd.type}&nbsp;</span><i className={`fa-solid ${typeIconMap[cardd.type]} fa-2xl actype`} title={cardd.type}/>
+            <Card.Title className="cardtitle">{cardd.activityName} &nbsp; 
+            <span className="typetext">{cardd.activityType}&nbsp;</span><i className={`fa-solid ${typeIconMap[cardd.activityType]} fa-2xl actype`} title={cardd.activityType}/>
             </Card.Title>
             <Card.Text>
-              {cardd.description}{" "}
+              {cardd.activityDetail}{" "}
               {/* <<<<<<<<<<<<<<<Add description here<<<<<<<<<<<<<<< */}
               <br />
               <br />
               <i className="fa-solid fa-calendar-days fa-2xl acdetail"></i>
-              &nbsp; &nbsp; Start {cardd.start}{" "}
+              &nbsp; &nbsp; Start {cardd.startDate}{" "}
               {/* <<<<<<<<<<<<<<<Add start here<<<<<<<<<<<<<<< */}
               <br />
               <br />
               <i className="fa-solid fa-flag-checkered fa-2xl acdetail"></i>
-              &nbsp; &nbsp; End {cardd.end}{" "}
+              &nbsp; &nbsp; End {cardd.endDate}{" "}
               {/* <<<<<<<<<<<<<<<Add end here<<<<<<<<<<<<<<< */}
               <br />
               <br />
               <i className="fa-solid fa-stopwatch fa-2xl acdetail"></i>
               &nbsp; &nbsp;
-              {cardd.duration}{" "}
+              {/* {cardd.duration}{" "} */}
               {/* <<<<<<<<<<<<<<<Add duration here<<<<<<<<<<<<<<< */}
               <br />
               <br />
@@ -190,7 +225,7 @@ function Activitycard() {
                 <i className="fa-solid fa-pen-to-square fa-2xl" />
               </Button>
             </a>
-            <Button variant="outline-danger" className="deleteactivitybtn">
+            <Button onClick={() => deletePost(cardd._id)} variant="outline-danger" className="deleteactivitybtn">
               <i className="fa-solid fa-trash fa-2xl"></i>
             </Button>
           </Card.Body>

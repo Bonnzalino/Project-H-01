@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 //config
 import { PORT, MONGODB_URI } from "./db.config.js";
@@ -10,6 +11,12 @@ import UserRoutes from "./routes/users-routes.js";
 import ActivityRoutes from "./routes/activities-routes.js";
 
 const app = express();
+const acceptedOrigin = {
+  origin: 'http://localhost:5173',
+  optionSuccessStatus: 200,
+}
+
+app.use(cors(acceptedOrigin))
 
 app.use(express.json());
 

@@ -7,52 +7,43 @@
     position: fixed;
     width: 100%;
     height: 100vh;    
-    top: 4%;
+    top: 8%;
     background-image: url('./images/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     z-index: -1;
+    overflow-y: scroll;
+    padding: 0;
 }
 
 .RegisterForm-box{
+    position:relative;
+    top: -20px;
     border-radius: 30px;
-    background-color: lightgray;
-    height: 80%;
-    width: auto;
+    background-color: rgba(212, 191, 191,0.5);
+    height: auto;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5% 0;
-}
-
-.RegisterForm-box>h2{
-    margin: 10px 0;
-}
-
-.RegisterForm-box>p{
-    color: red;
-    font-size: 8px;
     margin: 0;
     padding: 0;
 }
 
-/* .name-lastname{
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    margin: 2% 5%;
+.RegisterForm-box>h2{
+    margin: 10px 0;
+    padding: 30px 0 0 0;
 }
 
-.name-lastname input{
-    width: 80%;
-    height: 100%;
-    border-radius: 30px;
+.RegisterForm-box>p{
     text-align: center;
-    font-size: 30px;
-} */
+    color: red;
+    font-size: 15px;
+    margin: 0;
+    padding: 0 5px;
+}
 
 .left-name-lastname{
     display: flex;
@@ -81,12 +72,21 @@
     background-color: var(--primary-green);
     color: white;
     width: 150px;
-    height: 60px;
+    height: 40px;
     margin: 5px 0;
 }
 
 .RegisterForm-box>button:hover{
     background-color: var(--primary-yellow);
+}
+
+.RegisterForm-box span{
+    padding: 20px 20px 30px 20px;
+    text-align: center;
+}
+
+.RegisterForm-box a{
+    color: var(--primary-green);
 }
 
 @media (max-width: 768px) {

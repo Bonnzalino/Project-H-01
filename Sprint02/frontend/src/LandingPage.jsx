@@ -13,7 +13,7 @@ function LandingPage() {
     <Container fluid className="LandingPage">
       <Navbar className="Navlanding">
         <Container fluid>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href={localStorage.getItem('token')?"/Dashboard":"/"}>
             <img
               alt=""
               src="./images/logotrans.png"
@@ -23,7 +23,7 @@ function LandingPage() {
             />{" "}
             <span className="logintext">Everlasting</span>
           </Navbar.Brand>
-          <a href="/Login">
+          <a href={localStorage.token?"/Dashboard":"/Login"}>
             <span className="logintext">Log in</span>
           </a>
         </Container>

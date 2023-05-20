@@ -17,20 +17,17 @@ const UserSchema = new Schema({
   },
   email: { 
     type: String, 
-    required: [true, 'email is required'], 
-    unique: [true, 'email is already exists'] 
+    required: [true, 'email is required'],
   },
   password: { 
     type: String, 
     required: [true, 'password is already exists'], 
   },
   weight: { 
-    type: Number, 
-    required: [true, 'weight is required']  
+    type: [Number], 
   },
   height: { 
-    type: Number, 
-    required: [true, 'height is required']  
+    type: [Number],  
   },
 });
 

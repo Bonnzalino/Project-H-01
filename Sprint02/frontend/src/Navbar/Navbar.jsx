@@ -13,7 +13,6 @@ function Navbar() {
       setModalState('wait')
       setTimeout(() => {setModalState(false)},400)
     }
-    
   }
 
   function handleLogout () {
@@ -26,9 +25,11 @@ function Navbar() {
         <button className='hambergur-button' onClick={handleModalState}>
           <i className="fa-solid fa-bars fa-3x" style={{color: '#ffffff'}}></i>
         </button>
-        <span className='Appname'><a href='/'>Everlasting</a></span>
+        <span className='Appname'><a href={localStorage.getItem('token')?"/Dashboard":"/"}>Everlasting</a></span>
         <ul>
-            <li><a href='/Login'>Log in</a></li>
+            {localStorage.getItem('token')?
+            <li><a href={localStorage.getItem('token')?"/Dashboard":"/"}>Home</a></li>
+            :<li><a href='/Login'>Log in</a></li>}
             <li><a href='/Login' onClick={handleLogout}>Log out</a></li>
             {/* <li><a href='/EditProfile'>Edit Pro</a></li>
             <li><a href='/EditActivity'>Edit Act</a></li>
@@ -50,8 +51,9 @@ function Modal ({handleModalState, modalState}){
 
         <div className='modal-ul-box'>
           <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/Login'>Log in</a></li>
+          {localStorage.getItem('token')?
+            <li><a href={localStorage.getItem('token')?"/Dashboard":"/"}>Home</a></li>
+            :<li><a href='/Login'>Log in</a></li>}
             <li><a href='#'>Log out</a></li>
           </ul>
         </div>

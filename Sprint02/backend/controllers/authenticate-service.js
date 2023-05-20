@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET_KEY } from "../db.config.js";
 
 export const auth = async (req,res,next) => {
-    const token = (req.body.headers.authorization).replace('Bearer ', '')
+    const token = (req.headers.authorization).replace('Bearer ', '')
     if(token){
         try{
             const decode = jwt.verify(token, JWT_SECRET_KEY)

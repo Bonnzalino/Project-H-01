@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './main.css'
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
 
@@ -15,11 +16,22 @@ import RegisterForm from './RegisterForm';
 import Layout from './Navbar/Layout';
 import Dashboard from './DashBoard';
 import Login from './Login';
+import LandingPage from './LandingPage';
+import axios from 'axios';
+
+const ProtectRoute = ({children}) => {
+  const token = localStorage.getItem('token')
+    if(token){
+      return children
+    }else{
+      return <Navigate to='/Login' />
+    }
+  }
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:  <Dashboard />,  //Should be landing page
+    element:  <LandingPage />,  //Should be landing page
     errorElement: <Error />,
   },
   {
@@ -29,12 +41,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/AddActivity",
-    element:  <AddActivity />,
+    element:  (
+      <ProtectRoute>
+        <AddActivity />
+      </ProtectRoute>
+    ),
     errorElement: <Error />,
   },
   {
     path: "/RegisterComplete",
-    element:  <RegisterComplete />,
+    element: <RegisterComplete />,
     errorElement: <Error />,
   },
   {
@@ -43,13 +59,30 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/EditActivity",
-    element:  <EditActivity />,
+    path: "/EditActivity/:id",
+    element:  (
+      <ProtectRoute>
+        <EditActivity />
+      </ProtectRoute>
+    ),
     errorElement: <Error />,
   },
   {
     path: "/EditProfile",
-    element:  <EditProfile />,
+    element:  (
+      <ProtectRoute>
+        <EditProfile />
+      </ProtectRoute>
+    ),
+    errorElement: <Error />,
+  },
+  {
+    path: "/Dashboard",
+    element:  (
+      <ProtectRoute>
+        <Dashboard />
+      </ProtectRoute>
+    ),
     errorElement: <Error />,
   },
 

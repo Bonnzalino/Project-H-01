@@ -1,0 +1,24 @@
+.track-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.graph-activities-box{
+    border-radius: 30px;
+    background-color: rgba(250, 250, 250, 0.5);
+    height: 300px;
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.graph-BMI-box{
+    border-radius: 30px;
+    background-color: rgba(250, 250, 250, 0.5);
+    height: 300px;
+    width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+}

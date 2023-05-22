@@ -14,6 +14,7 @@ const UserRoutes = express.Router();
 // UserRoutes.get("/", () => getAllUsers);
 
 UserRoutes.post("/register", createUser);
-UserRoutes.post("/login", login)
+UserRoutes.post("/login", login);
+
 
 export default UserRoutes;

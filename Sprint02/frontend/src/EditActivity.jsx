@@ -94,6 +94,7 @@ function EditActivity() {
       setEditData({})
       setIsSelect("")
       alert("update success")
+      console.log(value)
     }
   }
 

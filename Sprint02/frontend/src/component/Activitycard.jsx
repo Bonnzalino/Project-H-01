@@ -122,74 +122,72 @@ const mockCard = [
 ];
 
 const typeIconMap = {
-  Running:  "fa-person-running" ,
-  Walking:  "fa-person-walking" ,
-  Swimming:  "fa-person-swimming fa-flip-horizontal" ,
-  Biking:  "fa-person-biking" ,
-  Hiking:  "fa-person-hiking",
+  Running: "fa-person-running",
+  Walking: "fa-person-walking",
+  Swimming: "fa-person-swimming fa-flip-horizontal",
+  Biking: "fa-person-biking",
+  Hiking: "fa-person-hiking",
 };
 
 const typeImgMap = {
-  Running:  "src/images/elder-running.jpeg" ,
-  Walking:  "src/images/elder-walking.jpeg" ,
-  Swimming:  "src/images/elder-swimming.jpeg" ,
-  Biking:  "src/images/elder-biking.jpeg" ,
-  Hiking:  "src/images/elder-hiking.webp",
+  Running: "src/images/elder-running.jpeg",
+  Walking: "src/images/elder-walking.jpeg",
+  Swimming: "src/images/elder-swimming.jpeg",
+  Biking: "src/images/elder-biking.jpeg",
+  Hiking: "src/images/elder-hiking.webp",
 };
-
-
-
 
 function Activitycard() {
   const [card, setCard] = useState([]);
 
   useEffect(() => {
-      async function fetchdata() {
-        const responseData = await axios.get('http://localhost:8080/activity/alldata')
+    async function fetchdata() {
+      const token = localStorage.getItem('token');
+      const responseData = await axios.get(
+        "http://localhost:8080/activity/userdata", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          }
+        }
+      );
       setCard([...responseData.data]);
       console.log(responseData.data);
-      }
-     fetchdata();
-  },[])
+    }
+    fetchdata();
+  }, []);
 
   const deletePost = (id) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete?');
-      if (confirmDelete) {
-    console.log(id);
-    axios
-      .delete(`http://localhost:8080/activity/delete/${id}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    if (confirmDelete) {
+      console.log(id);
+      axios
+        .delete(`http://localhost:8080/activity/delete/${id}`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
 
       window.location.reload();
-  }};
-
-
-  // const deletePost = (id) => {
-  //   console.log(id);
-  //   axios
-  //     .delete(`http://localhost:8080/activity/delete/${id}`)
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-
-  //     window.location.reload();
-  // };
+    }
+  };
 
   return (
     <Row className="cardrow">
       {card.map((cardd) => (
-        <Card
-          className="activitycard"
-          key={cardd._id}
-        >
-          {/* <Card.Img
+        <Card className="activitycard" key={cardd._id}>
+          <Card.Img
             variant="top"
             className="activitypic"
             src={`${typeImgMap[cardd.activityType]}`}
-          /> */}
+          />
           <Card.Body>
-            <Card.Title className="cardtitle">{cardd.activityName} &nbsp; 
-            <span className="typetext">{cardd.activityType}&nbsp;</span><i className={`fa-solid ${typeIconMap[cardd.activityType]} fa-2xl actype`} title={cardd.activityType}/>
+            <Card.Title className="cardtitle">
+              {cardd.activityName} &nbsp;
+              <span className="typetext">{cardd.activityType}&nbsp;</span>
+              <i
+                className={`fa-solid ${
+                  typeIconMap[cardd.activityType]
+                } fa-2xl actype`}
+                title={cardd.activityType}
+              />
             </Card.Title>
             <Card.Text>
               {cardd.activityDetail}{" "}
@@ -220,12 +218,16 @@ function Activitycard() {
               <br />
               <br />
             </Card.Text>
-            <a href="/EditActivity">
+            <a href={`/EditActivity/${cardd._id}`}>
               <Button variant="outline-success" className="editactivitybtn">
                 <i className="fa-solid fa-pen-to-square fa-2xl" />
               </Button>
             </a>
-            <Button onClick={() => deletePost(cardd._id)} variant="outline-danger" className="deleteactivitybtn">
+            <Button
+              onClick={() => deletePost(cardd._id)}
+              variant="outline-danger"
+              className="deleteactivitybtn"
+            >
               <i className="fa-solid fa-trash fa-2xl"></i>
             </Button>
           </Card.Body>

@@ -31,10 +31,10 @@ const ActivitySchema = new Schema({
     type : String,
     // optional
   },
-  // user: {
-  //   type: String, 
-  //   required: [true, 'user is required'], 
-  // },
+  user: {
+    type: String, 
+    required: [true, 'user is required'], 
+  },
 });
 
 const Activity = mongoose.model("Activity", ActivitySchema, "activities");

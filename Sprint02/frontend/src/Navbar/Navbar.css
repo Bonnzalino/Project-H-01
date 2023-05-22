@@ -10,8 +10,8 @@
     align-items: center;
     height: 8%;
     width: 100%;
-    position: absolute;
-    z-index: 0;
+    position: fixed;
+    z-index: 300;
 }
 
 .hambergur-button {

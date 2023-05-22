@@ -19,3 +19,28 @@ export const deleteCard = async (req, res, next) => {
    return res.status(200).json(gotData)
 }
 
+import Activity from "../models/activity-model.js";
+
+export const createActivity = async (req, res) => {
+    const data = req.body;
+    try { 
+        const newActivity = await Activity.create({
+        activityName: data.activityName,
+        activityType: data.activityType,
+        startTime: data.startTime,
+        finishTime: data.finishTime,
+        activityDetail: data.activityDetail,
+        activityImage: data.activityImage,
+        distance: data.distance,
+      })
+      if (!createActivity) {
+        return res.status(400).json({ message: "Cannot add new activity!" });
+      }
+        const newData = await newActivity.save();
+        return newData, res.status(200).json({ message: "New activity added successfully!" });
+    } catch (err) {
+      console.error(err);
+      return res.status(400).send(err);
+    }
+  };
+

@@ -49,7 +49,6 @@ function EditProfile() {
     const idLatest = db.length===0?1:db[db.length-1].id
     setDb(prev => [...prev,{id:idLatest+1,...input}])
     setInput({})
-    console.log(db)
   }
 
 

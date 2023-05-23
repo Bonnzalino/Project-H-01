@@ -60,6 +60,13 @@ function EditProfile() {
           {/* <input type='file' /> */}
           <img className='user-photo' src={myPhoto} style={{width:'150px'}} />
           <h2>{username}</h2>
+           <input className='height' 
+            name='height' 
+            placeholder='height in Cm'
+            value={input.height || ''}
+            onChange={handlerChange}
+            onBlur={handlerFocus}
+          />
           <input className='weight'
             name='weight'  
             placeholder='weight in Kg'
@@ -67,13 +74,7 @@ function EditProfile() {
             onChange={handlerChange}
             onBlur={handlerFocus}
           />
-          <input className='height' 
-            name='height' 
-            placeholder='height in Cm'
-            value={input.height || ''}
-            onChange={handlerChange}
-            onBlur={handlerFocus}
-          />
+         
           <p className='BMI'>Your BMI<br/><b>{bmi}</b></p>
           <p>Your advise weight is {adviseWeights} Kg</p>
           {/* <input className='setGoal' /> */}

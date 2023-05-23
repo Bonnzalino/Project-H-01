@@ -1,13 +1,16 @@
 import express from "express";
+import { getAllData, deleteCard } from "../controllers/activities-controller.js";
+import { getActivity, updateActivity } from "../controllers/edit-activity-controller.js";
+import {auth} from "../controllers/authenticate-service.js";
+
 
 //controllers
-import getActivityByUserId, {
-  createActivity,
-} from "../controllers/activities-controller";
+const ActivityRoutes = express.Router();
 
-const router = express.Router();
+ActivityRoutes.get("/alldata", getAllData);
+ActivityRoutes.delete("/delete/:id", deleteCard);
 
-router.get("/:uid", getActivityByUserId);
-router.post("/add-activity", createActivity);
+ActivityRoutes.get('/getactivity/:id',auth, getActivity);
+ActivityRoutes.put('/updateactivity/:id',auth, updateActivity);
 
-export default router;
+export default ActivityRoutes;

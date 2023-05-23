@@ -11,6 +11,9 @@ import { Swiper, SwiperSlide} from 'swiper/react'
 import { Navigation } from "swiper";
 import 'swiper/css'
 import 'swiper/css/navigation'
+import axios from 'axios'
+import {useParams,useNavigate} from 'react-router-dom'
+
 
 function EditActivity() {
   const [isSelect, setIsSelect] = useState('')
@@ -22,6 +25,10 @@ function EditActivity() {
   const [timeStartError, setTimeStartError] = useState("")
   const [timeEndError, setTimeEndError] = useState("")
   const [distanceError, setDistanceError] = useState("")
+
+
+  const {EditId} = useParams();
+  const NavigateAFTupdate = useNavigate();
 
   function handlerSelect(selected){
     if(selected===isSelect){
@@ -90,12 +97,51 @@ function EditActivity() {
     if(error){
       alert("cannot send form, please fill every input box")
     }else{
-      setDb([...db, editData])
-      setEditData({})
-      setIsSelect("")
-      alert("update success")
+      
+      const UpdateActivity = async () => {
+      try {       
+        const token = localStorage.getItem("token");
+
+        const UpdateAct = await axios.put(`http://localhost:8080/activity/updateactivity/646b08a3e2ff715e15c878a4`,
+        {...editData},
+        {headers: {authorization:`Bearer ${token}`}})
+
+
+        setEditData({})
+        setIsSelect("")
+        alert("update success")
+        NavigateAFTupdate(`/Dashboard`)
+      } catch (error) {}
+    }
+    UpdateActivity();
     }
   }
+
+
+
+  useEffect(()=>{
+    const fetchEditData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        
+        const EditData = await axios.get(`http://localhost:8080/activity/getactivity/646b08a3e2ff715e15c878a4`,{headers: {authorization:`Bearer ${token}`}})
+        console.log(EditData);
+        setEditData({activity:EditData.data.activityType,  
+                    activityName:EditData.data.activityName, 
+                    activityDetail:EditData.data.activityDetail, 
+                    timeStart:EditData.data.startTime, 
+                    timeEnd:EditData.data.finishTime, 
+                    distance:EditData.data.distance
+                  })
+
+        setIsSelect(EditData.data.activityType)
+      } catch (error) {}
+    }
+    fetchEditData();
+  },[])
+
+  /* FOR UPDATE DATA */
+  
 
   return (
      <div>
@@ -119,24 +165,30 @@ function EditActivity() {
             1040:{slidesPerView:3}
           }}
           >
-            <SwiperSlide><button onClick={()=>handlerSelect('bike')} style={{backgroundColor:isSelect==='bike'?'#ef4b3f':null}}><img src={bike_icon} /></button></SwiperSlide>
-            <SwiperSlide><button onClick={()=>handlerSelect('hike')} style={{backgroundColor:isSelect==='hike'?'#ef4b3f':null}}><img src={hike_icon}/></button></SwiperSlide>
-            <SwiperSlide><button onClick={()=>handlerSelect('run')} style={{backgroundColor:isSelect==='run'?'#ef4b3f':null}}><img src={run_icon}/></button></SwiperSlide>
-            <SwiperSlide><button onClick={()=>handlerSelect('walk')} style={{backgroundColor:isSelect==='walk'?'#ef4b3f':null}}><img src={walk_icon}/></button></SwiperSlide>
-            <SwiperSlide><button onClick={()=>handlerSelect('swim')} style={{backgroundColor:isSelect==='swim'?'#ef4b3f':null}}><img src={swim_icon}/></button></SwiperSlide>
+            <SwiperSlide><button onClick={()=>handlerSelect('Biking')} style={{backgroundColor:isSelect==='Biking'?'#ef4b3f':null}}><img src={bike_icon} /></button></SwiperSlide>
+            <SwiperSlide><button onClick={()=>handlerSelect('Hiking')} style={{backgroundColor:isSelect==='Hiking'?'#ef4b3f':null}}><img src={hike_icon}/></button></SwiperSlide>
+            <SwiperSlide><button onClick={()=>handlerSelect('Running')} style={{backgroundColor:isSelect==='Running'?'#ef4b3f':null}}><img src={run_icon}/></button></SwiperSlide>
+            <SwiperSlide><button onClick={()=>handlerSelect('Walking')} style={{backgroundColor:isSelect==='Walking'?'#ef4b3f':null}}><img src={walk_icon}/></button></SwiperSlide>
+            <SwiperSlide><button onClick={()=>handlerSelect('Swimming')} style={{backgroundColor:isSelect==='Swimming'?'#ef4b3f':null}}><img src={swim_icon}/></button></SwiperSlide>
           </Swiper>
           <span><p>selected activity : {isSelect}</p></span>
-          <p>{activityError}</p>
+           <p>{activityError}</p> 
+          
           <input type='text' placeholder='Activity Name' name='activityName' value={editData.activityName||""} onChange={handlerChange} style={{backgroundColor:activityNameError&&editData.activityName?"salmon":null}}/>
           <p>{activityNameError&&editData.activityName?activityNameError:""}</p>
+          
           <input type='text' placeholder='Activity Detail' name='activityDetail' value={editData.activityDetail||""} onChange={handlerChange} style={{backgroundColor:activityDetailError&&editData.activityDetail?"salmon":null}}/>
           <p>{activityDetailError&&editData.activityDetail?activityDetailError:""}</p>
+          
           <input type='datetime-local' placeholder='Time' name='timeStart' value={editData.timeStart||""} onChange={handlerChange} style={{backgroundColor:timeStartError&&editData.timeStart?"salmon":null}}/>
           <p>{timeStartError&&editData.timeStart?timeStartError:""}</p>
+          
           <input type='datetime-local' placeholder='Time' name='timeEnd' value={editData.timeEnd||""} onChange={handlerChange} style={{backgroundColor:timeEndError&&editData.timeEnd?"salmon":null}}/>
           <p>{timeEndError&&editData.timeEnd?timeEndError:""}</p>
+          
           <input type='number' placeholder='Distance' name='distance' value={editData.distance||""} onChange={handlerChange} style={{backgroundColor:distanceError&&editData.distance?"salmon":null}}/>
           <p>{distanceError&&editData.distance?distanceError:""}</p>
+          
           <input type='file' />
           {/* <p></p> */}
           <button onClick={handlerUpdate}>Update</button>

@@ -4,12 +4,16 @@ import express from "express";
 import User from "../models/user-model.js";
 
 //controller
-import getAllUsers from "../controllers/users-controller.js";
+// import getAllUsers from "../controllers/users-controller.js";
+import { createUser } from "../controllers/users-register-controller.js";
+import { login } from "../controllers/user-login-controller.js";
+// import { auth } from "../controllers/authenticate-service.js";
 
-const router = express.Router();
+const UserRoutes = express.Router();
 
-router.get("/", () => getAllUsers);
+// UserRoutes.get("/", () => getAllUsers);
 
-router.post("/", async (req, res, next) => {});
+UserRoutes.post("/register", createUser);
+UserRoutes.post("/login", login)
 
-export default router;
+export default UserRoutes;

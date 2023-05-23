@@ -12,6 +12,7 @@ import Layout from "./Navbar/Layout";
 import DashboardLabel from "./component/DasboardLabel";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Dashboard.css'
+
 import TrackBar from "./component/TrackingBar";
 
 function Dashboard() {

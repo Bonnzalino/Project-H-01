@@ -1,10 +1,29 @@
-import mongoose from "mongoose";
-import Activity from "../models/activity-model.js";
+import mongoose from "mongoose"
+import Activity from "../models/activity-model.js"
 
 export const getAllData = async (req, res, next) => {
-  const gotData = await Activity.find({}).exec();
-  return res.status(200).json(gotData);
-};
+   const gotData = await Activity.find({}).exec()
+   return res.status(200).json(gotData)
+}
+
+export const deleteCard = async (req, res, next) => {
+   Activity.findByIdAndDelete({ _id: req.params.id })
+     .then((doc) => console.log(doc))
+     .catch((err) => console.error(err));
+ };
+
+
+
+
+
+
+
+
+
+
+
+
+/* import mongoose from "mongoose";
 
 export const deleteCard = async (req, res, next) => {
   Activity.findByIdAndDelete({ _id: req.params.id })
@@ -45,3 +64,5 @@ export const createActivity = async (req, res) => {
     return res.status(400).send(err);
   }
 };
+
+

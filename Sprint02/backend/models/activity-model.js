@@ -39,4 +39,4 @@ const ActivitySchema = new Schema({
 
 const Activity = mongoose.model("Activity", ActivitySchema, "activities");
 
-export default Activity;
+export default Activity;  

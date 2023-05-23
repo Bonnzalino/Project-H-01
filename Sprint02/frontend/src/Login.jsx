@@ -17,10 +17,9 @@ import * as Yup from "yup";
 import { Hidden } from "@mui/material";
 import Layout from "./Navbar/Layout";
 import "./Login.css";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
 
 function Copyright(props) {
   return (
@@ -58,25 +57,25 @@ export default function Login() {
     remember: false,
   };
 
-  const handleSubmit =(values, props) => {
+  const handleSubmit = (values, props) => {
     setTimeout(() => {
       props.resetForm();
       props.setSubmitting(false);
     }, 2000);
     const login = async () => {
-        const resData = await axios.post('http://localhost:8080/user/login', {
+      const resData = await axios.post("http://localhost:8080/user/login", {
         email: values.email,
-        password: values.password
-      })
-      console.log(resData.data.status)
-      if(resData.data.status === 400){
-        alert(resData.data.message)
-      }else{
-        localStorage.setItem('token', resData.data.message)
-        navigation('/Dashboard')
+        password: values.password,
+      });
+      console.log(resData.data.status);
+      if (resData.data.status === 400) {
+        alert(resData.data.message);
+      } else {
+        localStorage.setItem("token", resData.data.message);
+        navigation("/Dashboard");
       }
-    }
-    login()
+    };
+    login();
   };
 
   const validationSchema = Yup.object().shape({
@@ -201,9 +200,7 @@ export default function Login() {
                 )}
               </Formik>
               <Grid container>
-                <Grid item xs>
-                  
-                </Grid>
+                <Grid item xs></Grid>
                 <Grid item>
                   <Link href="/RegisterForm" variant="body2">
                     {"Don't have an account? Sign Up"}

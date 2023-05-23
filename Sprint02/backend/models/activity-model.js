@@ -19,6 +19,9 @@ const ActivitySchema = new Schema({
     type: String, 
     required: [true, 'finish time is required']  
   },
+  duration: {
+    type: String
+  },
   activityDetail: { 
     type: String,
     required: [true, 'activity detail is required']

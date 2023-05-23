@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -13,7 +13,14 @@ import DashboardLabel from "./component/DasboardLabel";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Dashboard.css'
 
+import TrackBar from "./component/TrackingBar";
+
 function Dashboard() {
+  const [run, setRun] = useState(0)
+  const [walk, setWalk] = useState(0)
+  const [hike, setHike] = useState(0)
+  const [bike, setBike] = useState(0)
+  const [swim, setSwim] = useState(0)
   return (
     <Layout>
     <Container fluid className="bigcontainer">
@@ -25,9 +32,8 @@ function Dashboard() {
         </Col>
         <Col className="dashboard"  sm={12} md={9} xl={10}>
           <DashboardLabel />
-          
-            <Activitycard />
-          
+            <TrackBar run={run} walk={walk} bike={bike} hike={hike} swim={swim}/>
+            <Activitycard setRun={setRun} setWalk={setWalk} setBike={setBike} setHike={setHike} setSwim={setSwim} />
         </Col>
       </Row>
     </Container>

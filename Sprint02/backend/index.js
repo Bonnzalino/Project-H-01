@@ -9,7 +9,7 @@ import { PORT, MONGODB_URI } from "./db.config.js";
 //router
 import UserRoutes from "./routes/users-routes.js";
 import ActivityRoutes from "./routes/activities-routes.js";
-import { auth } from "./controllers/authenticate-service.js";
+// import { auth } from "./controllers/authenticate-service.js";
 
 const app = express();
 

@@ -8,119 +8,6 @@ import Card from "react-bootstrap/Card";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const mockCard = [
-  {
-    id: 1,
-    type: "Running",
-    name: "Running with U",
-    description: "Running in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 2,
-    type: "Walking",
-    name: "Walking with me",
-    description: "Walking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 3,
-    type: "Biking",
-    name: "Biking with myself",
-    description: "Biking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 4,
-    type: "Hiking",
-    name: "Hiking with U",
-    description: "Hiking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 5,
-    type: "Swimming",
-    name: "Swimming with U",
-    description: "Swimming in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 6,
-    type: "Running",
-    name: "Running with him",
-    description: "Running in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 7,
-    type: "Walking",
-    name: "Walking with U",
-    description: "Walking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 8,
-    type: "Biking",
-    name: "Biking with me",
-    description: "Biking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 9,
-    type: "Hiking",
-    name: "Hiking with her",
-    description: "Hiking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 10,
-    type: "Swimming",
-    name: "Swimming with U",
-    description: "Swimming in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-  {
-    id: 11,
-    type: "Hiking",
-    name: "Hiking with her",
-    description: "Hiking in the morning",
-    start: "19-04-23:19.01",
-    end: "19-04-23:19.11",
-    duration: 6000,
-    distance: 2000,
-  },
-];
-
 const typeIconMap = {
   Running: "fa-person-running",
   Walking: "fa-person-walking",
@@ -137,8 +24,9 @@ const typeImgMap = {
   Hiking: "src/images/elder-hiking.webp",
 };
 
-function Activitycard() {
+function Activitycard({setRun, setWalk, setHike, setSwim, setBike}) {
   const [card, setCard] = useState([]);
+  const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
     async function fetchdata() {
@@ -149,30 +37,52 @@ function Activitycard() {
             authorization: `Bearer ${token}`,
           }
         }
-      );
+        );
+        console.log(responseData)
+        // alert(responseData.data.message)
+      setBike(0);
+      setHike(0);
+      setRun(0);
+      setSwim(0);
+      setWalk(0);
       setCard([...responseData.data]);
-      console.log(responseData.data);
     }
     fetchdata();
-  }, []);
+    setIsDelete(false)
+  }, [isDelete]);
+
+  useEffect(()=>{
+    card.map(cardd =>{
+      if(cardd.activityType==='Biking'){
+        setBike(prev=>prev+=1)
+      }else if(cardd.activityType==='Hiking'){
+        setHike(prev=>prev+=1)
+      }else if(cardd.activityType==='Running'){
+        setRun(prev=>prev+=1)
+      }else if(cardd.activityType==='Walking'){
+        setWalk(prev=>prev+=1)
+      }else if(cardd.activityType==='Swimming'){
+        setSwim(prev=>prev+=1)
+      } 
+    })
+  }, [card])
 
   const deletePost = (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (confirmDelete) {
-      console.log(id);
       axios
         .delete(`http://localhost:8080/activity/delete/${id}`)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
-
-      window.location.reload();
+        setIsDelete(true)
+      // window.location.reload();
     }
   };
 
   return (
     <Row className="cardrow">
-      {card.map((cardd) => (
-        <Card className="activitycard" key={cardd._id}>
+      {card.map((cardd) =>
+        (<Card className="activitycard" key={cardd._id}>
           <Card.Img
             variant="top"
             className="activitypic"
@@ -195,18 +105,18 @@ function Activitycard() {
               <br />
               <br />
               <i className="fa-solid fa-calendar-days fa-2xl acdetail"></i>
-              &nbsp; &nbsp; Start {cardd.startDate}{" "}
+              &nbsp; &nbsp; Start {cardd.startTime}{" "}
               {/* <<<<<<<<<<<<<<<Add start here<<<<<<<<<<<<<<< */}
               <br />
               <br />
               <i className="fa-solid fa-flag-checkered fa-2xl acdetail"></i>
-              &nbsp; &nbsp; End {cardd.endDate}{" "}
+              &nbsp; &nbsp; End {cardd.finishTime}{" "}
               {/* <<<<<<<<<<<<<<<Add end here<<<<<<<<<<<<<<< */}
               <br />
               <br />
               <i className="fa-solid fa-stopwatch fa-2xl acdetail"></i>
               &nbsp; &nbsp;
-              {/* {cardd.duration}{" "} */}
+              {cardd.duration}{" "}
               {/* <<<<<<<<<<<<<<<Add duration here<<<<<<<<<<<<<<< */}
               <br />
               <br />

@@ -4,13 +4,13 @@ import Chart from 'chart.js/auto';
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 
-const TrackBar = () => {
+const TrackBar = ({run,walk,hike,swim,bike}) => {
 const activityData = {
     labels: ['Walk', 'Run', 'Swim', 'Hike', 'Bike'],
     datasets: [
       {
         label: 'Times of activity: ',
-        data: [4, 3, 1, 5, 2],
+        data: [walk, run, swim, hike, bike],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

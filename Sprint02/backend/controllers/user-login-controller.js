@@ -22,36 +22,6 @@ export const login = async (req, res) => {
         {user_id: userDetails._id, email},
         JWT_SECRET_KEY,
         {
-            expiresIn: "2h"
-        }
-    )
-    return res.status(200).json({
-        status: 200,
-        message: token
-    })
-}
-
-
-
-export const login = async (req, res) => {
-    const email = (req.body.email).toLowerCase().trim();
-    const password = (req.body.password).trim();
-    const userDetails = await User.findOne({email})
-    if(!userDetails){
-        return res.json({
-            status:400,
-            message: 'email or password is incorrect'
-        })
-    }else if(!bcrypt.compareSync(password, userDetails.password)){
-        return res.json({
-            status:400,
-            message: 'email or password is incorrect'
-        })
-    }
-    const token = jwt.sign(
-        {user_id: userDetails._id, email},
-        JWT_SECRET_KEY,
-        {
             expiresIn: "24h"
         }
     )
@@ -60,3 +30,4 @@ export const login = async (req, res) => {
         message: token
     })
 }
+

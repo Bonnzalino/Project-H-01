@@ -13,29 +13,12 @@ export const deleteCard = async (req, res, next) => {
  };
 
 
-
-
-
-
-
-
-
-
-
-
-/* import mongoose from "mongoose";
-
-export const deleteCard = async (req, res, next) => {
-  Activity.findByIdAndDelete({ _id: req.params.id })
-    .then((doc) => console.log(doc))
-    .catch((err) => console.error(err));
-};
-
 // vvvvvvvvvv Add by Bonn vvvvvvvvvvv
 export const getUserData = async (req, res, next) => {
   const gotData = await Activity.find({ user: req.user.user_id }).exec();
   return res.status(200).json(gotData);
 };
+
 
 export const createActivity = async (req, res) => {
   const data = req.body;

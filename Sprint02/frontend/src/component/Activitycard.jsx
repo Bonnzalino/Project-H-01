@@ -189,6 +189,7 @@ function Activitycard() {
                 title={cardd.activityType}
               />
             </Card.Title>
+            
             <Card.Text>
               {cardd.activityDetail}{" "}
               {/* <<<<<<<<<<<<<<<Add description here<<<<<<<<<<<<<<< */}

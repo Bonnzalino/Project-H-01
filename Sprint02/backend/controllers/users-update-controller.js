@@ -1,6 +1,6 @@
 import User from "../models/user-model.js";
 import HttpError from "../models/http-error.js";
-import cloudinary from "../utils/cloudinary.js";
+// import cloudinary from "../utils/cloudinary.js";
 
 export const getProfileById = async (req, res, next) => {
   try {
@@ -36,14 +36,15 @@ export const updateProfileById = async (req, res, next) => {
       {
         firstname,
         lastname,
-        $push: { height, weight },
+        $push: { height, weight, updatedAt: lastUpdated },
         profileImage,
-        $push: { updatedAt: lastUpdated },
       },
       { new: true }
     ).exec();
-    if (!updatedUser)
-      return res.status(404).json({ message: "User not found" });
+    if (!updatedUser) {
+      throw new HttpError("User Not Found", 404);
+    }
+
     return res
       .status(200)
       .json({ updatedUser, msg: "Edit profile successfully!!" });

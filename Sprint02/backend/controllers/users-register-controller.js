@@ -51,3 +51,4 @@ export const createUser = async (req, res) =>{
         message: 'user created successfully'
     })
 } 
+

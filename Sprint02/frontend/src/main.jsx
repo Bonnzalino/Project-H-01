@@ -59,8 +59,12 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/EditActivity",
-    element:  <EditActivity />,
+    path: "/EditActivity/:id",
+    element:  (
+      <ProtectRoute>
+        <EditActivity />
+      </ProtectRoute>
+    ),
     errorElement: <Error />,
   },
   {

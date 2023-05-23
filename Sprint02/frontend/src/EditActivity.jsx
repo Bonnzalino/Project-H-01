@@ -13,12 +13,14 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import axios from 'axios'
 import {useParams,useNavigate} from 'react-router-dom'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content"; 
+
 
 
 function EditActivity() {
   const [isSelect, setIsSelect] = useState('')
   const [editData, setEditData] = useState({activity:"", activityName:"", activityDetail:"", timeStart:"", timeEnd:"", distance:""})
-  const [db, setDb] = useState([])
   const [activityError, setActivityError] = useState("")
   const [activityNameError, setActivityNameError] = useState("")
   const [activityDetailError, setActivityDetail] = useState("")
@@ -27,7 +29,7 @@ function EditActivity() {
   const [distanceError, setDistanceError] = useState("")
 
 
-  const {EditId} = useParams();
+  const {id} = useParams();
   const NavigateAFTupdate = useNavigate();
 
   function handlerSelect(selected){
@@ -101,16 +103,30 @@ function EditActivity() {
       const UpdateActivity = async () => {
       try {       
         const token = localStorage.getItem("token");
+        
 
-        const UpdateAct = await axios.put(`http://localhost:8080/activity/updateactivity/646b08a3e2ff715e15c878a4`,
-        {...editData},
+        const UpdateAct = await axios.put(`http://localhost:8080/activity/updateactivity/${id}`,
+        {
+          activityType:editData.activity, 
+          activityName:editData.activityName,
+          activityDetail:editData.activityDetail, 
+          startTime:editData.timeStart, 
+          finishTime:editData.timeEnd, 
+          distance:editData.distance,
+        },
         {headers: {authorization:`Bearer ${token}`}})
 
 
         setEditData({})
         setIsSelect("")
-        alert("update success")
-        NavigateAFTupdate(`/Dashboard`)
+        
+        const MySwal = withReactContent(Swal);
+        MySwal.fire({
+          icon: "success",
+          title: "Your activity has been updated"
+        }).then(() => {
+          NavigateAFTupdate("/Dashboard");
+        });
       } catch (error) {}
     }
     UpdateActivity();
@@ -123,8 +139,8 @@ function EditActivity() {
     const fetchEditData = async () => {
       try {
         const token = localStorage.getItem("token");
-        
-        const EditData = await axios.get(`http://localhost:8080/activity/getactivity/646b08a3e2ff715e15c878a4`,{headers: {authorization:`Bearer ${token}`}})
+        console.log(id);
+        const EditData = await axios.get(`http://localhost:8080/activity/getactivity/${id}`,{headers: {authorization:`Bearer ${token}`}})
         console.log(EditData);
         setEditData({activity:EditData.data.activityType,  
                     activityName:EditData.data.activityName, 

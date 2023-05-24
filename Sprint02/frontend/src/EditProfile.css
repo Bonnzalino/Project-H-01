@@ -21,11 +21,26 @@
     border-radius: 30px;
     border: none;
     width: 70%;
+    padding-top: 25px;
 }
 
-.form-box>input[type="file"]{
-    margin: 20px;
-    border-radius: 0;
+input[type='file'] {
+    display: none;
+}
+
+.upload-image {
+    cursor: pointer;
+    border: 2px solid gray;
+    display: inline-block;
+    border-radius: 100%;
+    padding: 0;
+    margin: 10px;
+}
+
+.user-photo{
+    border-radius: 100%;
+    margin: 0;
+    width: 100%;
 }
 
 .form-box>button{
@@ -46,7 +61,7 @@
     width: 80%;
     text-align: center;
     border-radius: 30px;
-    height: 30px;
+    height: 35px;
 }
 
 .form-box>p{
@@ -58,11 +73,6 @@
     font-size: 30px;
 }
 
-.user-photo{
-    border-radius: 100%;
-    margin: 10px;
-    width: 80%;
-}
 
 .goal-status{
     padding: 0 20px;
@@ -78,7 +88,6 @@
 
 .goal{
     width:30px;
-    /* height: 50px; */
 }
 
 .runner-box{
@@ -90,4 +99,43 @@
     height: 5px;
     border-radius: 10px;
     background-color: var(--primary-orange);
+}
+
+.upload-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 7px var(--primary-orange);
+}
+
+.form-box > .edit-name-mode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-box > .edit-name-inmode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.edit-name-inmode label {
+    width: 20%;
+    padding: 0 6px;
+    text-align: center;
+}
+
+.edit-name-inmode input {
+    width: 40%;
+}
+
+.form-box > .error-submit {
+    color: rgb(250, 0, 0);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.BMI, .advised-weight {
+    font-size: 20px;
 }

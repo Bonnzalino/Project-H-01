@@ -13,7 +13,9 @@ function LandingPage() {
     <Container fluid className="LandingPage">
       <Navbar className="Navlanding">
         <Container fluid>
-          <Navbar.Brand href={localStorage.getItem('token')?"/Dashboard":"/"}>
+          <Navbar.Brand
+            href={localStorage.getItem("token") ? "/Dashboard" : "/"}
+          >
             <img
               alt=""
               src="./images/logotrans.png"
@@ -23,7 +25,7 @@ function LandingPage() {
             />{" "}
             <span className="logintext">Everlasting</span>
           </Navbar.Brand>
-          <a href={localStorage.token?"/Dashboard":"/Login"}>
+          <a href={localStorage.token ? "/Dashboard" : "/Login"}>
             <span className="logintext">Log in</span>
           </a>
         </Container>
@@ -59,7 +61,8 @@ function main() {
           />
         </Col>
         <Col className="main2right">
-          <h1 class="display-5 fw-bold lh-1 mb-1">Why Us?</h1><br />
+          <h1 class="display-5 fw-bold lh-1 mb-1">Why Us?</h1>
+          <br />
           <p class="lead">
             FEELING TRIED TO START WORK OUT??
             <br />
@@ -93,26 +96,26 @@ function main() {
           </p>
         </Col>
         <Col className="main2 groupcard">
-        <CardGroup>
-        <Card className="eachactivity">
-          <Card.Img
-            src="https://image1.masterfile.com/getImage/NjMyLTAxMTQ2NjUxZW4uMDAwMDAwMDA=AJu65G/632-01146651en_Masterfile.jpg"
-            className="acimg"
-          />
-           </Card>
-           <Card className="eachactivity">
-          <Card.Img
-            src="https://media.istockphoto.com/id/1187760500/photo/senior-couple-is-hiking-in-forest-adventure-travel-hike-and-people-concept.jpg?s=612x612&w=0&k=20&c=ixvqNEolLuETBUjunkP0lQgYcsbRWMg1W7yLG5POues="
-            className="acimg"
-          />
-        </Card>
-        <Card className="eachactivity">
-          <Card.Img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjo8aAzsJXrmogegqhDr2vTF4H5Q8kyldEhg&usqp=CAU"
-            className="acimg"
-          />
-        </Card>
-        </CardGroup>
+          <CardGroup>
+            <Card className="eachactivity">
+              <Card.Img
+                src="https://image1.masterfile.com/getImage/NjMyLTAxMTQ2NjUxZW4uMDAwMDAwMDA=AJu65G/632-01146651en_Masterfile.jpg"
+                className="acimg"
+              />
+            </Card>
+            <Card className="eachactivity">
+              <Card.Img
+                src="https://media.istockphoto.com/id/1187760500/photo/senior-couple-is-hiking-in-forest-adventure-travel-hike-and-people-concept.jpg?s=612x612&w=0&k=20&c=ixvqNEolLuETBUjunkP0lQgYcsbRWMg1W7yLG5POues="
+                className="acimg"
+              />
+            </Card>
+            <Card className="eachactivity">
+              <Card.Img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjo8aAzsJXrmogegqhDr2vTF4H5Q8kyldEhg&usqp=CAU"
+                className="acimg"
+              />
+            </Card>
+          </CardGroup>
         </Col>
       </Row>
       {/* <Row className="groupcard">

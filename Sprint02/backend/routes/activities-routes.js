@@ -10,6 +10,6 @@ ActivityRoutes.delete("/delete/:id", deleteCard);
 // VVVVVVVVVV Add by Bonn VVVVVVVVVV
 ActivityRoutes.get("/userdata", auth,  getUserData);
 
-ActivityRoutes.post("/add-activity", auth, createActivity);
+ActivityRoutes.post("/add-activity", auth, createActivity)
 
 export default ActivityRoutes;

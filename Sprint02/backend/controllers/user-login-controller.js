@@ -22,7 +22,7 @@ export const login = async (req, res) => {
         {user_id: userDetails._id, email},
         JWT_SECRET_KEY,
         {
-            expiresIn: "2h"
+            expiresIn: "24h"
         }
     )
     return res.status(200).json({

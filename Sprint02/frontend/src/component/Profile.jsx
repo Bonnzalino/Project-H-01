@@ -15,7 +15,7 @@ function Profile() {
       try {
         const token = localStorage.getItem("token");
         const userProfile = await axios.get(
-          "http://localhost:8080/user/getprofile",
+          `http://localhost:8080/user/getprofile`,
           {
             headers: { authorization: `Bearer ${token}` },
           }
@@ -49,7 +49,7 @@ function Profile() {
           Height: {profile.height} cm <br />
           Weight: {profile.weight} kg <br />
         </Card.Text>
-        <a href="/EditProfile">
+        <a href={`/EditProfile/${profile._id}`}>
           <Button variant="secondary" className="editbtn">
             <i className="fa-solid fa-pen-to-square" /> Edit Profile
           </Button>

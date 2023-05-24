@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "./Navbar/Layout";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
@@ -26,13 +26,16 @@ function EditProfile() {
   //useNavigate
   const navigation = useNavigate();
 
+  //useParams to get an id
+  const { id } = useParams();
+
   //get profile to display
   useEffect(() => {
     const getProfile = async () => {
       try {
         const token = localStorage.getItem("token");
         const fetchProfile = await axios.get(
-          "http://localhost:8080/user/getprofile",
+          `http://localhost:8080/user/getprofile`,
           {
             headers: { authorization: `Bearer ${token}` },
           }
@@ -131,7 +134,7 @@ function EditProfile() {
         const token = localStorage.getItem("token");
 
         const response = await axios.put(
-          `http://localhost:8080/user/editprofile`,
+          `http://localhost:8080/user/editprofile/${id}`,
           {
             firstname,
             lastname,

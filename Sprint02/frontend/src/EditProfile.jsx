@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "./Navbar/Layout";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
@@ -123,7 +123,7 @@ function EditProfile() {
         cancelButtonText: "Cancel",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigation("/Dashboard");
+          navigate("/Dashboard");
         }
       });
     } else if (checkInput()) {

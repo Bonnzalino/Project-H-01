@@ -81,7 +81,7 @@ function Activitycard({setRun, setWalk, setHike, setSwim, setBike}) {
 
   return (
     <Row className="cardrow">
-      {card.map((cardd) =>
+      {card.slice().reverse().map((cardd) =>
         (<Card className="activitycard" key={cardd._id}>
           <Card.Img
             variant="top"

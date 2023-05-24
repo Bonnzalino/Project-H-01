@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./AddActivity.css";
 import Layout from "./Navbar/Layout";
+
 const Form = () => {
+  const navigation = useNavigate();
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [data, setData] = useState({
     activityType: "",
@@ -11,10 +14,44 @@ const Form = () => {
     activityDetail: "",
     startTime: "",
     finishTime: "",
-    file: "",
+    activityImage: "",
   });
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const postData = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axios.post(
+      "http://localhost:8080/activity/add-activity",
+      {
+        activityName: data.activityName,
+        activityType: data.activityType,
+        startTime: data.startTime,
+        finishTime: data.finishTime,
+        activityDetail: data.activityDetail,
+        activityImage: data.activityImage,
+        distance: data.distance,
+      },
+      { headers: { authorization: `Bearer ${token}` } }
+    );
+    if (response.status === 200) {
+      setData({
+        activityType: "",
+        activityName: "",
+        distance: "",
+        activityDetail: "",
+        startTime: "",
+        finishTime: "",
+        activityImage: "",
+      });
+      alert(response.data.message);
+      navigation("/Dashboard");
+    }
+  };
+
+  // useEffect(() =>{
+  //   postData()
+  // },[]);
 
   const handleClick = (theActivity) => {
     setSelectedActivity(theActivity);
@@ -34,11 +71,10 @@ const Form = () => {
     e.preventDefault();
     setFormErrors(validate(data));
     setIsSubmit(true);
+    postData();
   };
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(data);
     }
   }, [formErrors]);
 

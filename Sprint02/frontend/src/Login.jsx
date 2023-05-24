@@ -267,7 +267,7 @@ export default function Login() {
             </Typography>
           </Grid>
         </Grid>
-      </ThemeProvider>
+      </ThemeProvider>  
     </Layout>
   );
 }

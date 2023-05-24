@@ -57,3 +57,16 @@ export const updateProfileById = async (req, res, next) => {
     return next(error);
   }
 };
+
+export const getBMI = async (req, res) =>{
+  try {
+    const { user_id } = req.user;
+    const user = await User.findById(user_id).exec();
+    return res.json({
+      status: 200,
+      user
+    })
+  }catch(err){
+
+  }
+}

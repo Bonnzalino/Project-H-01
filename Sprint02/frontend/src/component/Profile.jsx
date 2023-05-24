@@ -54,7 +54,7 @@ function Profile() {
             <i className="fa-solid fa-pen-to-square" /> Edit Profile
           </Button>
         </a>
-        <a href="/AddActivity">
+        <a href="/AddActivity/data">
           <Button variant="secondary" className="addbtn">
             <i className="fa-regular fa-square-plus" /> Add Activity
           </Button>

@@ -13,12 +13,8 @@ ActivityRoutes.delete("/delete/:id", deleteCard);
 ActivityRoutes.get('/getactivity/:id',auth, getActivity);
 ActivityRoutes.put('/updateactivity/:id',auth, updateActivity);
 
-<<<<<<< HEAD
-ActivityRoutes.post("/add-activity", auth, createActivity)
-=======
 ActivityRoutes.get("/userdata", auth,  getUserData);
 ActivityRoutes.post("/add-activity", auth, createActivity);
->>>>>>> develop
 
 
 export default ActivityRoutes;

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './TrackingBar.css';
 import Chart from 'chart.js/auto';
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { useState } from "react";
+import axios from "axios";
 
 
 const TrackBar = ({run,walk,hike,swim,bike,handleStart,handleEnd,isStart,duration}) => {
+  const [userUpdate, setUpdata] = useState()
+  const [userWeight, setUserWeight] = useState()
 
 
 const activityData = {
@@ -36,12 +39,25 @@ const activityData = {
     ],
   };
 
+  useEffect(()=>{
+    const token = localStorage.getItem('token');
+    async function fetchData () {
+      const resData = await axios.get('http://localhost:8080/user/getBMI',
+      {headers: { authorization: 'Bearer ' + token}}
+      )
+      setUpdata(resData.data.user.updatedAt)
+      setUserWeight(resData.data.user.weight)
+      // console.log(resData.data.user)
+    }
+    fetchData()
+  }, [])
+
   const weightData = {
-    labels: [1,2,3,4,5,6],
+    labels: userUpdate,
     datasets: [
       {
         label: 'weight',
-        data: [110, 105, 98, 90, 88, 80],
+        data: userWeight,
         borderWidth: 1,
       },
     ],

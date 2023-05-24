@@ -38,7 +38,6 @@ function Activitycard({setRun, setWalk, setHike, setSwim, setBike}) {
           }
         }
         );
-        console.log(responseData)
         // alert(responseData.data.message)
       setBike(0);
       setHike(0);

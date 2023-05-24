@@ -3,8 +3,12 @@ import './TrackingBar.css';
 import Chart from 'chart.js/auto';
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
+import { useState } from "react";
 
-const TrackBar = ({run,walk,hike,swim,bike}) => {
+
+const TrackBar = ({run,walk,hike,swim,bike,handleStart,handleEnd,isStart,duration}) => {
+
+
 const activityData = {
     labels: ['Walk', 'Run', 'Swim', 'Hike', 'Bike'],
     datasets: [
@@ -12,12 +16,12 @@ const activityData = {
         label: 'Times of activity: ',
         data: [walk, run, swim, hike, bike],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.9)',
+          'rgba(54, 162, 235, 0.9)',
+          'rgba(255, 206, 86, 0.9)',
+          'rgba(75, 192, 192, 0.9)',
+          'rgba(153, 102, 255, 0.9)',
+          'rgba(255, 159, 64, 0.9)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -46,9 +50,11 @@ const activityData = {
     return(
         <div className="track-box">
             <div className="quick-box">
-                <h2>You are inactivity</h2>
-                <div className="timer">00:00:00</div>
-                <button>Quick Start</button>
+                <div style={{height:'50px'}}><h2 style={{textAlign:'center', fontSize:'25px'}}>{isStart?'You in activity':'Start Activity just click Quick Start'}</h2></div>
+                <div className="timer" style={{fontSize:'40px'}}>{duration}</div>
+                {isStart? 
+                <button onClick={handleEnd}>Stop Activity</button>:
+                <button onClick={handleStart}>Quick Start</button>}
             </div>
             <div className="graph-activities-box">
                 <Doughnut 

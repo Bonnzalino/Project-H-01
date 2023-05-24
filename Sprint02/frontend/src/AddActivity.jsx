@@ -3,9 +3,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./AddActivity.css";
 import Layout from "./Navbar/Layout";
+import bikeIcon from './images/bike_icon.png'
+import hikeIcon from './images/hike_icon.png'
+import runIcon from './images/run_icon.png'
+import walkIcon from './images/walk_icon.png'
+import swimIcon from './images/swim_icon.png'
+import { useParams } from "react-router-dom";
 
 const Form = () => {
   const navigation = useNavigate();
+  const { quickData } = useParams();
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [data, setData] = useState({
     activityType: "",
@@ -18,7 +25,10 @@ const Form = () => {
   });
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const dataArray = quickData.split(",")
+  console.log(dataArray)
 
+  
   const postData = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.post(
@@ -49,10 +59,6 @@ const Form = () => {
     }
   };
 
-  // useEffect(() =>{
-  //   postData()
-  // },[]);
-
   const handleClick = (theActivity) => {
     setSelectedActivity(theActivity);
   };
@@ -69,9 +75,17 @@ const Form = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(validate(data));
-    setIsSubmit(true);
-    postData();
+    if(dataArray[0]==='true'){
+      data.startTime = dataArray[1]
+      data.finishTime = dataArray[2]
+      setFormErrors(validate(data));
+      setIsSubmit(true);
+      postData();
+    }else{
+      setFormErrors(validate(data));
+      setIsSubmit(true);
+      postData();
+    }
   };
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -114,7 +128,7 @@ const Form = () => {
               backgroundColor: selectedActivity === "Biking" ? "white" : null,
             }}
           >
-            <img src="./icons/bicycle.png" alt="biking" />
+            <img src={bikeIcon} alt="biking" />
           </button>
           <button
             onClick={() => handleClick("Hiking")}
@@ -122,7 +136,7 @@ const Form = () => {
               backgroundColor: selectedActivity === "Hiking" ? "white" : null,
             }}
           >
-            <img src="./icons/hiking.png" alt="hiking" />
+            <img src={hikeIcon} alt="hiking" />
           </button>
           <button
             onClick={() => handleClick("Running")}
@@ -130,7 +144,7 @@ const Form = () => {
               backgroundColor: selectedActivity === "Running" ? "white" : null,
             }}
           >
-            <img src="./icons/running.png" alt="running" />
+            <img src={runIcon} alt="running" />
           </button>
           <button
             onClick={() => handleClick("Walking")}
@@ -138,7 +152,7 @@ const Form = () => {
               backgroundColor: selectedActivity === "Walking" ? "white" : null,
             }}
           >
-            <img src="./icons/walk.png" alt="walking" />
+            <img src={walkIcon} alt="walking" />
           </button>
           <button
             onClick={() => handleClick("Swimming")}
@@ -146,7 +160,7 @@ const Form = () => {
               backgroundColor: selectedActivity === "Swimming" ? "white" : null,
             }}
           >
-            <img src="./icons/swimming.png" alt="swimming" />
+            <img src={swimIcon} alt="swimming" />
           </button>
         </div>
         <div id="error">
@@ -186,8 +200,9 @@ const Form = () => {
               <input
                 type="datetime-local"
                 name="startTime"
-                value={data.startTime}
+                value={dataArray[0]==='true'?dataArray[1]:data.startTime}
                 onChange={handleChange}
+                readOnly={dataArray[0]==='true'?true:false}
               />
               <p className="error-message">{formErrors.startTime}</p>
             </div>
@@ -197,8 +212,9 @@ const Form = () => {
               <input
                 type="datetime-local"
                 name="finishTime"
-                value={data.finishTime}
+                value={dataArray[0]==='true'?dataArray[2]:data.finishTime}
                 onChange={handleChange}
+                readOnly={dataArray[0]==='true'?true:false}
               />
               <p className="error-message">{formErrors.finishTime}</p>
             </div>

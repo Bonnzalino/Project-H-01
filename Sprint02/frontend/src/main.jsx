@@ -18,6 +18,7 @@ import Dashboard from './DashBoard';
 import Login from './Login';
 import LandingPage from './LandingPage';
 import axios from 'axios';
+import { useState } from 'react';
 
 const ProtectRoute = ({children}) => {
   const token = localStorage.getItem('token')
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/AddActivity",
+    path: "/AddActivity/:quickData",
     element:  (
       <ProtectRoute>
         <AddActivity />
@@ -85,8 +86,6 @@ const router = createBrowserRouter([
     ),
     errorElement: <Error />,
   },
-
-
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

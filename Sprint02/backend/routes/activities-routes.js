@@ -1,15 +1,24 @@
 import express from "express";
-import { getAllData, deleteCard, getUserData, createActivity } from "../controllers/activities-controller.js";
-import { auth } from "../controllers/authenticate-service.js";
+import { createActivity,getUserData, deleteCard } from "../controllers/activities-controller.js";
+import { getActivity, updateActivity } from "../controllers/edit-activity-controller.js";
+import {auth} from "../controllers/authenticate-service.js";
+
 
 //controllers
 const ActivityRoutes = express.Router();
 
+
 ActivityRoutes.delete("/delete/:id", deleteCard);
 
-// VVVVVVVVVV Add by Bonn VVVVVVVVVV
-ActivityRoutes.get("/userdata", auth,  getUserData);
+ActivityRoutes.get('/getactivity/:id',auth, getActivity);
+ActivityRoutes.put('/updateactivity/:id',auth, updateActivity);
 
+<<<<<<< HEAD
 ActivityRoutes.post("/add-activity", auth, createActivity)
+=======
+ActivityRoutes.get("/userdata", auth,  getUserData);
+ActivityRoutes.post("/add-activity", auth, createActivity);
+>>>>>>> develop
+
 
 export default ActivityRoutes;

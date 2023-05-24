@@ -4,7 +4,8 @@ import HttpError from "../models/http-error.js";
 
 export const getProfileById = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user.user_id).exec();
+    const { user_id } = req.user;
+    const user = await User.findById(user_id).exec();
     const height = user.height[user.height.length - 1];
     const weight = user.weight[user.weight.length - 1];
 
@@ -21,7 +22,7 @@ export const getProfileById = async (req, res, next) => {
 
 export const updateProfileById = async (req, res, next) => {
   try {
-    const { user_id } = req.user;
+    const { id } = req.params;
     const { firstname, lastname, height, weight, profileImage } = req.body;
     if (!firstname || !lastname || !height || !weight || !profileImage) {
       return new HttpError("Can't find this profile", 404);
@@ -32,7 +33,7 @@ export const updateProfileById = async (req, res, next) => {
     const lastUpdated = [`${y}-${m}-${d}`];
 
     const updatedUser = await User.findByIdAndUpdate(
-      user_id,
+      id,
       {
         firstname,
         lastname,

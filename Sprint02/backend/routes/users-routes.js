@@ -15,6 +15,6 @@ UserRoutes.post("/register", createUser);
 UserRoutes.post("/login", login);
 
 UserRoutes.get("/getprofile", auth, getProfileById);
-UserRoutes.put("/editprofile", auth, updateProfileById);
+UserRoutes.put("/editprofile/:id", auth, updateProfileById);
 
 export default UserRoutes;
